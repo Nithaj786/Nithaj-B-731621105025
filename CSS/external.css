@@ -1,0 +1,8 @@
+.ec{
+    border: 2px solid black;
+    text-align: center;
+    width: 50%;
+    color: blue;
+    background-color: lightcoral;
+    cursor: pointer;
+}
