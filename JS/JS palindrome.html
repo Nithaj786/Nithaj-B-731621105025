@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+   
+</head>
+<body>
+    <script>
+        function isPalindrome() {
+            var str = document.getElementById("str").value;
+            var reversedStr = str.split('').reverse().join('');
+            if(str === reversedStr){
+                document.write("yes")
+            }
+            else{
+                document.write("no")
+            }
+        }
+    </script>
+    <center>
+    <label>Enter a String: <input type="text" id="str"></label><br>
+    <button onclick="isPalindrome()">Check Palindrome</button><br>
+    <div id="palindromeResult"></div>
+</center>
+</body>
+</html>

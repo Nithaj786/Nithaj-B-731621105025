@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+</head>
+<body>
+    <center>
+    Enter the Number:<input type="number" id="n"/>
+    <br>
+    <button onclick="factorial(n)">Fact</button>
+    <br>
+    <div id="divi">
+
+    </div>
+</center>
+
+<script>
+    let factorial = () =>
+{
+    let num=parseInt(document.getElementById("n").value);
+    let result="<table border='2' width='50%'>";
+        result+= "<tr><th>Number</th></tr>";
+    for(let i=1;i<=num;i++){
+            fact=1;
+            for(let j=1;j<=i;j++){
+                fact*=j;
+            }
+            result+="<tr><td>"+i+"</td><td>"+fact+"</td></tr>";
+    }
+    result +="</table>";
+    document.getElementById("divi").innerHTML=result;
+}
+</script>
+</body>
+</html>

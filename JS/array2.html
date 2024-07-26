@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script>
+function array1(){
+        let skills=new Array("C","C++","python","java");
+        document.write("Array Elements: "+skills +" ");
+        document.write("<br>"+ skills.length);
+        document.write("<br> First element:"+ skills[0]);
+        document.write("<br> Last element:" +skills.length-1);
+        skills.push(".Net");
+        document.write("<br>Array elements:" +skills);
+        skills.pop();
+        document.write("<br> After removal: "+skills);
+        document.write("<br/>Array elements:");
+
+        for(let i=0;i<skills.length;i++){
+            document.write("<br>"+skills[i]);
+        }
+
+}
+    </script>
+</head>
+<body onload="array1()">
+    
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+   
+</head>
+<body>
+    <script>
+
+        let add = () => 10+30;
+        document.write("<br/>"+add() );
+
+        let sub = (x,y) => x-y;
+        document.write("<br/>"+sub(10,20) );
+
+        let multi = (x,y) =>{
+            return x*y;
+        } 
+        document.write("<br/>"+multi(10,20) );
+
+        let big = (x,y) =>{ 
+            if (x>y)
+             return x;
+            else
+                return y;
+        };
+        document.write("<br>"+ big(10,20) );
+
+        let  fact = (x) => {
+            let fact=1;
+            for(let i=1;i<=x;i++){
+                fact*=i;
+            }
+           return fact;
+        }
+        document.write("<br> Factorial is:"+ fact(6));
+        
+    </script>
+</body>
+</html>
