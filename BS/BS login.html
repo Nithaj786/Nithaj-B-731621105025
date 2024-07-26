@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BS login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<style>
+    .containe{
+        border: 1px solid skyblue;
+        width: 350px;
+        height: 330px;
+        /* position: absolute;
+        top: 180px;
+        left: 450px; */
+    }
+    
+    small{
+        padding-left: 130px;
+    }
+    hr{
+        border: 2px solid black;
+        width: 300px;
+
+    }
+   
+</style>
+</head>
+<body>
+    <div class="containe table-bordered position: relative; top:180px; left:450px;">
+        <!-- <span class="border border-primary"></span>   -->
+   <h3 class="w-25 p-3 mt-0 " style="background-color : aqua "><b>Sign in</b><small><a href="">Forgetpassword?</a></small></h3>
+    <div class="container ">
+    <div class="form-group">
+        <div class="input-group">
+            
+            <span class="input-group-addon glyphicon glyphicon-user"></span>
+            <input type="text" name="full_name" id="first_name" class="input-lg" placeholder="Username or email" value="" tabindex="1">
+            </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+            <p class="input-group-addon glyphicon glyphicon-lock"></p>
+            <input type="text" pass="Password" id="first_name" class="input-lg" placeholder="Password" value="" tabindex="2">
+        </div>
+           
+    </div>
+
+            <input type="checkbox"/>Remember me 
+            <br><br>
+            <button type="submit" class="btn btn-success">Login</button> 
+            <button type="submit" class=" btn btn-primary">Login with Facebok</button> 
+            
+
+        </div>
+        <hr>
+            <h6 class="p-2">Don't have an account! <a href="">Sing up here</a></h6>
+        </div>
+</body>
+</html>
