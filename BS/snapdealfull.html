@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .d2{
+        display: flex;
+        justify-content: space-around;
+        text-align: center;
+    }
+        .d1{
+            background-color: rgb(185, 2, 2);
+        }
+        .d3{
+            position: absolute;
+            left: 300px;
+            margin-top: 8px;
+            height: 30px;
+        }
+        .sear{
+            width: 400px;
+            border: none;
+            height: 30px;
+        }
+        .sear1{
+            width: 200px;
+            border: none;
+            height: 45px;
+        }
+        button{
+            color: white;
+            background-color: black;
+            height: 30px;
+            /* padding-right: 40px; */
+            padding-left: 10px;
+        }
+        .search2{
+            color: white;
+            padding-bottom: 10px;
+            size: 20px;
+        }
+        h6{
+            background-color: rgb(148, 13, 13);
+            color: white;
+            margin-top: 0px;
+            height: 14px;
+        }
+        .containe{
+            background-color: white;
+            width: 19%;
+            position: absolute;
+            left: 20px;
+            padding:10px;
+            margin-top: 0px;
+            border-radius: 4px;
+            padding-left: 20px;
+        }
+        body{
+            background-color: lightgray;
+        }
+        a{
+            color: black;
+            text-decoration: dotted;
+        }
+        li:hover{
+            background-color: aqua;
+            border-left: 2px solid red;
+            text-decoration: dotted;
+            height: 30px;
+        }
+        .listright:hover{
+            background-color: lightgray;
+            border-left: 2px solid red;
+            text-decoration: dotted;
+            height: 30px;
+        }
+        .top1{
+            width: 30px;
+            height: 30px;
+        }
+        .imgleft{
+            display: flex;
+            justify-content: space-evenly;
+            background-color: white;
+            height: 450px;
+            width: 850px;
+            padding-top: 10px;
+        }
+        .il1{
+            height: 150px;
+            width: 200px;
+        }
+        .il2:hover{
+            /* transform: scale(1.1); */
+            background: #e1e1e1;
+            /* border: 1px solid black; */
+            box-shadow: black;
+            
+        }
+        .checked{
+            color: orange;
+        }
+        .qr{
+            width: 19%;
+            position: absolute;
+            left: 20px;
+            padding:10px;
+            margin-top: 0px;
+            border-radius: 4px;
+            padding-left: 20px;
+            margin-top: 770px;
+        }
+        .i1{
+            width: 60px;
+            height: 60px;
+        }
+        .p12{
+            padding: 10px;
+            margin-top: 2px;
+        }
+        .topimg1{
+            height: 330px;
+        }
+        .imgleft1{
+            display: flex;
+            justify-content: space-around;
+            background-color: white;
+            height: 150px;
+            width: 100%;
+            padding-top: 3px;
+            margin-top: 950px;
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+        }
+        .divbot1{
+            display: flex;
+            justify-content: space-around;
+            background-color: white;
+            height: 250px;
+            width: 100%;
+            padding-top: 23px;
+            margin-top: 0px;
+            border-bottom: 1px solid black;
+        }
+        .payment{
+            width: 60px;
+            height: 30px;
+        }
+        .connect{
+            width: 50px;
+            height: 40px;
+        }
+        #paycon{
+            display: flex;
+            justify-content: space-evenly;
+            background-color: white;
+            height: auto; 
+        }
+        .made{
+            display: flex;
+            justify-content: space-between;
+            background-color: white;
+            height: auto;  
+        }
+</style>
+</head>
+<body>
+    <div class="d1">
+        
+        <h6>Brand Waali Quality, Bazaar Waali Deal!</h6>
+        
+       <div class="d2 table"> 
+        <div>
+        <img class="logo" src="../logo1.png" width="150px" height="30px"> 
+    </div>
+    
+        <!-- <div class="form-group">  -->
+        <!-- <div class="input-group"> -->
+            <!-- <div class="col-sm-1"></div> -->
+            <!-- <span class="input-group-addon glyphicon glyphicon-icon"></span> -->
+          <div>
+            <table><tr>
+                <th>
+            <input type="text" class="sear" placeholder="search">
+        </th><th>
+            <button type="submit" id="search1" class="bg-black glyphicon glyphicon-search">Search</button>
+        </th></tr></table>
+        </div>
+    
+        <!-- <div class="col-sm-1"></div> -->
+         
+        
+         <div class="search2">  
+        <h5 class="glyphicon glyphicon-shopping-cart">Cart</h5>
+    </div>
+        <!-- <div class="col-sm-1"></div> -->
+        
+        <div class="search2">
+            <h5  class="glyphicon glyphicon-user">Sign in</h5>
+        </div>
+        <!-- </div> -->
+    <!-- </div> -->
+    </div>
+    </div>
+
+    <div class="containe">
+        <!-- <ul type="none" > -->
+        <!-- <center> <h4>Top Categories</h4></center> -->
+        <p style="text-transform: uppercase">Top Catagories</p>
+     <!-- <pre> -->
+         <p class="listright"><img class="top1 img-circle" src="../o1.jpg"><a href=""> Men's Collection</a></p><br>
+         <p class="listright"><img class="top1 img-circle" src="../o1.jpg"><a href=""> Women's Collection</a></p><br>
+         <p class="listright"><img class="top1 img-circle" src="../o1.jpg"><a href=""> Home & Kitchen</a></p><br>
+         <p class="listright"><img class="top1 img-circle" src="../o1.jpg"><a href=""> Toys/Kids</a></p><br>
+         <p class="listright"><img class="top1 img-circle" src="../o1.jpg"><a href=""> Beauty/Healthy</a></p><br>
+     <!-- </pre> -->
+    <!-- </ul> -->
+    
+     <p class="listright" style="text-transform: uppercase"><a href="">More Catagories</a></p>
+     <p class="listright" style="text-transform: uppercase"><a href="">Automotives</a></p>
+     <p class="listright" style="text-transform: uppercase"><a href="">Mobile & Accessoires</a></p>
+     <p class="listright" style="text-transform: uppercase"><a href="">Electronics</a></p>
+     <p class="listright" style="text-transform: uppercase"><a href="">Sports</a></p>
+     <p class="listright" style="text-transform: uppercase"><a href="">Computer</a></p>
+     <p class="listright" style="text-transform: uppercase"><a href="">Books</a></p>
+     <p class="listright" style="text-transform: uppercase" ><a href="">Hobbies</a></p>
+     <p class="listright" style="text-transform: uppercase"><a href="">Mobile & Accessoires</a></p>
+     <p class="listright" style="text-transform: uppercase"><a href="">Electronics</a></p>
+     <p class="listright" style="text-transform: uppercase"><a href="">Sports</a></p>
+     <p class="listright"  style="text-transform: uppercase"><a href="">Computer</a></p>
+     <p class="listright" style="text-transform: uppercase"><a href="">Books</a></p>
+     <p class="listright" style="text-transform: uppercase"><a href="">Hobbies</a></p>
+    
+ </div>
+
+ <div class="qr">
+    <table><tr><th>
+     <img class="i1" src="../NP.png">
+     </th>
+     <th>
+     <p class="p12 p-10">
+   Enjoy convinient<br>
+   order Tracking<br>
+ <small>Scan to download app</small>
+     </p>
+    </th></tr></table>
+ </div>
+
+ <div class="d3">
+ <!-- <div class="slideshow-container">
+    <div class="mySlides fade">
+        <div class="numbertext">1 / 3</div>
+        <img src="../NP.png" style="width:20%">
+        <div class="text">Caption Text</div>
+      </div>
+      <div class="mySlides fade">
+        <div class="numbertext">2 / 3</div>
+        <img src="../NP.png" style="width:80%">
+        <div class="text">Caption Text</div>
+      </div>
+      <div class="mySlides fade">
+        <div class="numbertext">3 / 3</div>
+        <img src="../NP.png" style="width:80%">
+        <div class="text">Caption Text</div>
+      </div>
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div> -->
+<img class="topimg1" src="../black.jfif"><br>
+
+<h4>Recently viewed Products</h4><br>
+
+ <div class="imgleft">
+    <div class="il2">
+        <img class="il1" src="../o1.jpg"><br><br>
+        Discolight<br>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star "></span>
+        <p><s>Rs 399</s> Rs 146</p><p border="1px solid : black">64% OFF</p>
+    </div>
+    <div class="il2">
+        <img class="il1" src="../o1.jpg"><br><br>
+        Discolight<br>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star "></span>
+        <span class="fa fa-star "></span>
+        <p><s>Rs 599</s> Rs 200</p><p border="1px solid : black">54% OFF</p>
+    </div>
+    <div class="il2" >
+        <img class="il1" src="../o1.jpg"><br><br>
+        Discolight<br>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star "></span>
+        <p><s>Rs 499</s> Rs 180</p><p border="1px solid : black">45% OFF</p>
+    </div>
+    <div class="il2">
+        <img class="il1" src="../o1.jpg"><br><br>
+        Discolight<br>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star "></span>
+        <span class="fa fa-star "></span>
+        <p><s>Rs 699</s> Rs 156</p><p border="1px solid : black">70% OFF</p>
+    </div>
+ </div>
+</div>
+
+<div class="imgleft1 ">
+ <div class="table-bordered">
+    <center><img class="i1" src="../black.jfif"><br>
+    <b>100% Secure PAYMENTS</b><br><br>
+    <small>Moving your cards details to a much more     <br>  Secured place</small>
+</center> 
+</div>
+ <div class="table-bordered">
+    <center><img class="i1" src="../black.jfif"><br>
+    <b>Turstpay</b><br><br>
+    <small>100% payment protection .Easy<br> return Policy</small>
+</center> 
+</div>
+ <div class="table-bordered">
+    <center><img class="i1" src="../black.jfif"><br>
+    <b>Help Center</b><br><br>
+    <small>Got a question? No futher.<br>Because our FAQs or Submit are here</small>
+</center> 
+</div>
+ <div class="table-bordered">
+   <center> <img class="i1" src="../black.jfif"><br>
+    <b>Shop on Go</b><br><br>
+    <small>Download the app and get exciting<br> app only offers at your fingerprints</small>
+</center> 
+</div>
+</div>
+
+<div class="divbot1">
+ <div>
+    <h5><b>POLICY INFO</b></h5>
+    <p>Privacy Policy <br>
+        Terms of Sale<br>
+        Terms of Use<br>
+        Report Abuse & Takedown Policy<br>
+        Know Your BIS Standard<br>
+        Product Under Cumpulsory BIS<br>
+        Certification<br>
+        FAQ
+    </p>
+ </div>
+ <div>
+    <h5><b>COMPANY</b></h5>
+    <p>Privacy Policy <br>
+        Terms of Sale<br>
+        Terms of Use<br>
+        Report Abuse & Takedown Policy<br>
+        Know Your BIS Standard<br>
+        Product Under Cumpulsory BIS<br>
+        Certification<br>
+        FAQ
+    </p>
+ </div>
+ <div>
+    <h5><b>SANPDEAL BUSSINESS</b></h5>
+    <p>Privacy Policy <br>
+        Terms of Sale<br>
+        Terms of Use<br>
+        Report Abuse & Takedown Policy<br>
+        Know Your BIS Standard<br>
+        Product Under Cumpulsory BIS<br>
+        Certification<br>
+        FAQ
+    </p>
+ </div>
+ <div>
+    <h5><b>POPULAR LINK</b></h5>
+    <p>Privacy Policy <br>
+        Terms of Sale<br>
+        Terms of Use<br>
+        Report Abuse & Takedown Policy<br>
+        Know Your BIS Standard<br>
+        Product Under Cumpulsory BIS<br>
+        Certification<br>
+        FAQ
+    </p>
+ </div>
+ <div>
+    <h5><b>SUBCRIBE</b></h5>
+    <table><tr>
+        <th>
+    <input type="text" class="sear1" placeholder="YOUR EMAIL ADDERES">
+</th><th>
+    <button type="submit" id="search2" class="bg-black glyphicon glyphicon-search">SUBCRIBE</button>
+</th></tr></table>
+<p>Register now to get updates on promotions<br> and coupons. Or <b><a herf=""> Download App</a></b></p>
+</div>
+</div>
+
+<div id="paycon">
+    <div>
+        <h5>PAYMENT</h5>
+        <img class="payment" src="../black.jfif">
+        <img class="payment" src="../black.jfif">
+        <img class="payment" src="../black.jfif">
+        <img class="payment" src="../black.jfif">
+    </div>
+    <div>
+        <h5>CONNECT</h5>
+        <img class=" connect img-circle" src="../black.jfif">
+        <img class=" connect img-circle" src="../black.jfif">
+        <img class=" connect img-circle" src="../black.jfif">
+        <img class=" connect img-circle" src="../black.jfif">
+    </div>
+</div>
+
+
+<div>
+    <p><b>Men:</b> <a href=""> Shirts for Men</a> / <a href=""> Shirts for Men</a> / <a href=""> Shirts for Men</a> / <a href=""> Shirts for Men</a> / <a href=""> Shirts for Men</a> / <a href=""> Shirts for Men</a> / <a href=""> Shirts for Men</a> / <a href=""> Shirts for Men</a>/ <a href=""> Shirts for Men</a> / <a href=""> Shirts for Men</a> / <a href=""> Shirts for Men</a> / <a href=""> Shirts for Men</a> / <a href=""> Shirts for Men</a> / <a href=""> Shirts for Men</a> / <a href=""> Shirts for Men</a> <br> <b>Women:</b> <a href=""> Tops for Women</a> / <a href=""> Tops for Women</a> / <a href=""> Tops for Women</a> / <a href=""> Tops for Women</a> / <a href=""> Tops for Women</a> / <a href=""> Tops for Women</a> / <a href=""> Tops for Women</a> / <a href=""> Tops for Women</a> / <a href=""> Tops for Women</a> / <a href=""> Tops for Women</a> / <a href=""> Tops for Women</a> / <a href=""> Tops for Women</a> / <a href=""> Tops for Women</a> / <a href=""> Tops for Women</a>  <br>
+        <br>Snapdeal is India's leading pure-play value Ecommerce platform. Founded in 2010 by Kunal Bahl and Rohit Bansal, Snapdeal is one of the top four online lifestyle shopping destinations of India. Snapdeal brings together a wide assortment of good quality and value- priced merchandise on its platform. Snapdeal's vision is to enable the shoppers of Bharat to experience the joy of living their aspirations through reliable, value-for-money shopping. With a personalized, multilingual interface and cutting edge technology, Snapdeal has simplified the shopping experience for its value-conscious buyers by showcasing the most relevant products- products that are a good functional fit with their needs and of a quality that lasts- thereby delivering true value to its customers. With its commitment to high service standards, Snapdeal suppliers operate under a well structured ecosystem that enables them to offer great quality products at affordable prices. With majority of the value-seeking, middle-income, price-conscious buyers coming from the non-metros, Snapdeal’s logistics networks powered by third party logistics cover more than 96% of India’s pin codes enabling order deliveries to more than 2500 towns and cities and expanding. Further, Snapdeal's mission is to become India’s value lifestyle omni-channel leader. We are excited about continuing to build a complete ecosystem around value commerce, where we can serve Bharat consumers wherever they are on their offline to online shopping journey. Snapdeal is part of the AceVector Group and one of India’s best-known e-commerce companies with an exclusive focus on the value segment.
+    </p>
+</div>
+
+
+<div class="made">
+    <div>
+    <p><small>Copyright © 2021, Snapdeal Limited. All Rights Reserved</small></p>
+</div>
+<div>
+    <p>Made For NITHAJ</p>
+</div>
+</div>
+
+</body>
+</html>
