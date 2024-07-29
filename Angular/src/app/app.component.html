@@ -1,0 +1,17 @@
+<h1>My Angular App</h1>
+<br>
+Name:{{name}}
+<br>Age{{age}}
+<br>Email<input type="mail" value="{{email}}"/>
+<br>
+<!-- property binding -->
+ Name<input type="text" [value]="name"/>;<br>
+ Age<input type="text" [value]="age"/>;<br>
+ Email<input type="mail" [value]="email"/>;<br>
+
+ <h1>Even Binding</h1>
+ <button (click)="changename()">Change Name</button>
+<br>
+ <img [src]="imagepath" width="100px" height="100px"/>
+ <br>
+ <button (click)="changeimage()">ChangeImg</button>
