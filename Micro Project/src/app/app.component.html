@@ -1,0 +1,48 @@
+<nav><h1>BOOK STORE MANAGEMENT</h1></nav>
+<br><br>
+<div class="container mt-5">
+  <div class="row">
+      <div class="col-md-12">
+
+        <!-- <nav><h1>BOOK STORE MANAGEMENT</h1></nav> -->
+        
+          <input #myuser type="text" class="form-control" [placeholder]="UserName">
+          <input #myamo type="number" class="form-control" [placeholder]="amount">
+          <input #mymem type="text" class="form-control" [placeholder]="Buyer">
+          <button (click)="onclick(myuser, myamo, mymem)" class="btn btn-danger mt-3">Create User</button>
+
+          <br><br>
+
+          <!-- <input #myamo type="number" class="form-control" [placeholder]="amount"> -->
+          <!-- <button (click)="onclic(myamo)" class="btn btn-danger mt-3">Create User</button> -->
+
+          <table class="table table-bordered mt-3">
+              <thead class="thead-light">
+                  <tr>
+                      <th>S.No</th>
+                      <th>BOOK Name</th>
+                      <th>Price</th>
+                      <th>Buyer Name</th>
+                      <th>Delete User</th>
+                      <th>Edit User</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let i of userlist; let j of useramount; let o of bookuser; index as userno" >
+                      <td>{{userno + 1}}</td>
+                      <td>{{i}}</td>
+                      <td>{{j}}userno</td>
+                      <td>{{o}}</td>
+                      <td>
+                          <button (click)="ondelete(userno)" class="btn btn-success">Remove User</button>
+                      </td>
+                      <td>
+                        <button (click)="offclick(myuser, myamo, mymem)" class="btn btn-info mt-3">Edit</button>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+
+      </div>
+  </div>
+</div>
