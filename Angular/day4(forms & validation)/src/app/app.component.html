@@ -1,0 +1,63 @@
+<!-- <h1>My Angular App</h1>
+<br>
+Name:{{name}}
+<br>Age{{age}}
+<br>Email<input type="mail" value="{{email}}"/>
+<br> -->
+<!-- property binding -->
+ <!-- Name<input type="text" [value]="name"/>;<br>
+ Age<input type="text" [value]="age"/>;<br>
+ Email<input type="mail" [value]="email"/>;<br>
+
+ <h1>Even Binding</h1>
+ <button (click)="changename()">Change Name</button>
+<br>
+ <img [src]="imagepath" width="100px" height="100px"/>
+ <br>
+ <button (click)="changeimage()">ChangeImg</button> -->
+
+
+ <!-- 30/07/2024  -->
+  <!-- TWO WAY DATA  -->
+   <!-- <h1>TWO WAY DATA BINDING</h1>
+   <br>
+   Enter your first name<input type="text" [(ngModel)]="frame"/>
+   <br>
+   <b>Welcome {{frame}}</b> -->
+
+
+   <!-- <h1 [ngClass]="myclass">Structural and Attribute Directives Example</h1>
+   <br>
+   <button (click)="changeflag()">Show or Hide Div</button>
+   <br>
+   <div *ngIf="flag" [ngStyle]="mystyle" [ngClass]="mycla">
+    <br>
+    <ul>
+        <li *ngFor="let vat of vehicles" (click)="setSelectedItem(vat)">{{vat}}</li>
+    </ul>
+    <br>
+    <b>you are selected : {{selectedvehicles}}</b>
+    <div [ngSwitch]="selectedvehicles">
+        <b color="green" *ngSwitchCase="'two'">Bike</b>
+        <b color="green" *ngSwitchCase="'three'">Auto</b>
+        <b color="green" *ngSwitchCase="'fou'">Car</b>
+        <b color="green" *ngSwitchDefault>Invalid</b>
+    </div>
+    <br>
+    <button (click)="changestyle()">change</button>
+   </div> -->
+
+
+   <table width="100%" align="center">
+    <tr>
+        <th><a routerLink="home">Home</a></th>
+        <th><a routerLink="contact">Contact</a></th>
+        <th><a routerLink="about">About</a></th>
+    </tr>
+   </table>
+   <div>
+    this is space for new COMPONENTS
+    <router-outlet></router-outlet>
+    <h1>Addition : {{sum}}</h1>
+    <app-nithaj></app-nithaj>
+   </div>
