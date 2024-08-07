@@ -1,0 +1,576 @@
+SQL*Plus: Release 11.2.0.2.0 Production on Wed Aug 7 13:02:28 2024
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> connect system
+Enter password:
+Connected.
+SQL> create table tbl_nit(id number(5),name varchar2(20),age number(3));
+
+Table created.
+
+SQL> insert into  tbl_nit values(101,'Nithaj',20);
+
+1 row created.
+
+SQL> insert into  tbl_nit values(102,'Zaheer',15);
+
+1 row created.
+
+SQL> insert into  tbl_nit values(103,'Babu',52);
+
+1 row created.
+
+SQL> insert into  tbl_nit values(104,'Fathimabi',47);
+
+1 row created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select * from tbl_nit;
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       101 Nithaj                       20
+       102 Zaheer                       15
+       103 Babu                         52
+       104 Fathimabi                    47
+
+SQL> select * from tbl_nit where id in (101,102,103);
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       101 Nithaj                       20
+       102 Zaheer                       15
+       103 Babu                         52
+
+SQL> select * from tbl_nit where name in (nithaj,babu);
+select * from tbl_nit where name in (nithaj,babu)
+                                            *
+ERROR at line 1:
+ORA-00904: "BABU": invalid identifier
+
+
+SQL> select * from tbl_nit where name in ('nithaj','babu');
+
+no rows selected
+
+SQL> select * from tbl_nit where name in ('Nithaj','Babu');
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       101 Nithaj                       20
+       103 Babu                         52
+
+SQL> select * from tbl_nit where name in ('Nithaj','Babu','selva');
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       101 Nithaj                       20
+       103 Babu                         52
+
+SQL> select * from tbl_nit where name not in ('Nithaj','Babu','selva');
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       102 Zaheer                       15
+       104 Fathimabi                    47
+
+SQL> select * from tbl_nit where age between in 20 and 47;
+select * from tbl_nit where age between in 20 and 47
+                                        *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL>
+SQL> select * from tbl_nit where Age between in 20 and 47;
+select * from tbl_nit where Age between in 20 and 47
+                                        *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> select * from tbl_nit where Age between 20 and 47;
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       101 Nithaj                       20
+       104 Fathimabi                    47
+
+SQL> select * from tbl_nit where Age not between 20 and 47;
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       102 Zaheer                       15
+       103 Babu                         52
+
+SQL> select * from tbl_nit where name between 'Nithaj' and 'Babu';
+
+no rows selected
+
+SQL> select * from tbl_nit where Age not between 47 and 20;
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       101 Nithaj                       20
+       102 Zaheer                       15
+       103 Babu                         52
+       104 Fathimabi                    47
+
+SQL> select * from tbl_nit where Age between 47 and 20;
+
+no rows selected
+
+SQL> select * from tbl_nit where id in (101,102,103) and age>20
+  2  select * from tbl_nit where id in (101,102,103) and age>20;
+select * from tbl_nit where id in (101,102,103) and age>20
+*
+ERROR at line 2:
+ORA-00933: SQL command not properly ended
+
+
+SQL> select * from tbl_nit where id in (101,102,103) and age >20;
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       103 Babu                         52
+
+SQL> select * from tbl_nit where id in (101,102,103) and age >=20;
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       101 Nithaj                       20
+       103 Babu                         52
+
+SQL> select * from tbl_nit where id in (101,102,103) or age >=20;
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       101 Nithaj                       20
+       102 Zaheer                       15
+       103 Babu                         52
+       104 Fathimabi                    47
+
+SQL> select * from tbl_nit where id in (104,102,103) or age >20;
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       102 Zaheer                       15
+       103 Babu                         52
+       104 Fathimabi                    47
+
+SQL> select * from tbl_nit where id >102 and age >90;
+
+no rows selected
+
+SQL> select * from tbl_nit where id >102 or age >90;
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       103 Babu                         52
+       104 Fathimabi                    47
+
+SQL> insert into tbl_nit values(105,17);
+insert into tbl_nit values(105,17)
+            *
+ERROR at line 1:
+ORA-00947: not enough values
+
+
+SQL> insert into tbl_nit (id,age) values(105,17);
+
+1 row created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select * from tbl_nit;
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       101 Nithaj                       20
+       102 Zaheer                       15
+       103 Babu                         52
+       104 Fathimabi                    47
+       105                              17
+
+SQL> select * from tbl_nit where name is null;
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       105                              17
+
+SQL> select * from tbl_nit where name is not null;
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       101 Nithaj                       20
+       102 Zaheer                       15
+       103 Babu                         52
+       104 Fathimabi                    47
+
+SQL> select * from tbl_nit where name,id is null;
+select * from tbl_nit where name,id is null
+                                *
+ERROR at line 1:
+ORA-00920: invalid relational operator
+
+
+SQL> select * from tbl_nit where name is null;
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       105                              17
+
+SQL> select * from tbl_nit where name like 'N%';
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       101 Nithaj                       20
+
+SQL> select * from tbl_nit where name like '_a%';
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       102 Zaheer                       15
+       103 Babu                         52
+       104 Fathimabi                    47
+
+SQL> select * from tbl_nit where name like '__b%';
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       103 Babu                         52
+
+SQL> select * from tbl_nit where name like '%i';
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       104 Fathimabi                    47
+
+SQL> select * from tbl_nit where name like '%a%';
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       101 Nithaj                       20
+       102 Zaheer                       15
+       103 Babu                         52
+       104 Fathimabi                    47
+
+SQL> select * from tbl_nit where name not like 'N%';
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       102 Zaheer                       15
+       103 Babu                         52
+       104 Fathimabi                    47
+
+SQL> select * from tbl_nit order by id;
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       101 Nithaj                       20
+       102 Zaheer                       15
+       103 Babu                         52
+       104 Fathimabi                    47
+       105                              17
+
+SQL> select * from tbl_nit order by id desc;
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       105                              17
+       104 Fathimabi                    47
+       103 Babu                         52
+       102 Zaheer                       15
+       101 Nithaj                       20
+
+SQL> select * from tbl_nit order by name desc;
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       105                              17
+       102 Zaheer                       15
+       101 Nithaj                       20
+       104 Fathimabi                    47
+       103 Babu                         52
+
+SQL> select * from tbl_nit order by name desc N;
+select * from tbl_nit order by name desc N
+                                         *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> select * from tbl_nit order by name desc;
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       105                              17
+       102 Zaheer                       15
+       101 Nithaj                       20
+       104 Fathimabi                    47
+       103 Babu                         52
+
+SQL> select * from tbl_nit order by age desc;
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       103 Babu                         52
+       104 Fathimabi                    47
+       101 Nithaj                       20
+       105                              17
+       102 Zaheer                       15
+
+SQL> alter table tbl_nit add dob date;
+
+Table altered.
+
+SQL> desc tbl_nit;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                                 NUMBER(5)
+ NAME                                               VARCHAR2(20)
+ AGE                                                NUMBER(3)
+ DOB                                                DATE
+
+SQL> select * from tbl_nit;
+
+        ID NAME                        AGE DOB
+---------- -------------------- ---------- ---------
+       101 Nithaj                       20
+       102 Zaheer                       15
+       103 Babu                         52
+       104 Fathimabi                    47
+       105                              17
+
+SQL> select * from tbl_nit where name in(NULL) and dob in(NULL);
+
+no rows selected
+
+SQL> select * from tbl_nit where dob is null;
+
+        ID NAME                        AGE DOB
+---------- -------------------- ---------- ---------
+       101 Nithaj                       20
+       102 Zaheer                       15
+       103 Babu                         52
+       104 Fathimabi                    47
+       105                              17
+
+SQL> update tbl_nit set dob=sysdate where id=103;
+
+1 row updated.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select * from tbl_nit;
+
+        ID NAME                        AGE DOB
+---------- -------------------- ---------- ---------
+       101 Nithaj                       20
+       102 Zaheer                       15
+       103 Babu                         52 07-AUG-24
+       104 Fathimabi                    47
+       105                              17
+
+SQL> update tbl_nit set dob='19-Mar-2024' where id in (102,101);
+
+2 rows updated.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select * from tbl_nit;
+
+        ID NAME                        AGE DOB
+---------- -------------------- ---------- ---------
+       101 Nithaj                       20 19-MAR-24
+       102 Zaheer                       15 19-MAR-24
+       103 Babu                         52 07-AUG-24
+       104 Fathimabi                    47
+       105                              17
+
+SQL> update tbl_nit set dob='19-Mar-2024' where id in (102,103);
+
+2 rows updated.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select * from tbl_nit;
+
+        ID NAME                        AGE DOB
+---------- -------------------- ---------- ---------
+       101 Nithaj                       20 19-MAR-24
+       102 Zaheer                       15 19-MAR-24
+       103 Babu                         52 19-MAR-24
+       104 Fathimabi                    47
+       105                              17
+
+SQL> update tbl_nit set dob=sysdate where id=103;
+
+1 row updated.
+
+SQL> select * from tbl_nit;
+
+        ID NAME                        AGE DOB
+---------- -------------------- ---------- ---------
+       101 Nithaj                       20 19-MAR-24
+       102 Zaheer                       15 19-MAR-24
+       103 Babu                         52 07-AUG-24
+       104 Fathimabi                    47
+       105                              17
+
+SQL> select * from tbl_nit drop column dob;
+select * from tbl_nit drop column dob
+                      *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> alter table tbl_nit drop dob;
+alter table tbl_nit drop dob
+                         *
+ERROR at line 1:
+ORA-00905: missing keyword
+
+
+SQL> alter table tbl_nit drop column dob;
+
+Table altered.
+
+SQL> select * from tbl_nit;
+
+        ID NAME                        AGE
+---------- -------------------- ----------
+       101 Nithaj                       20
+       102 Zaheer                       15
+       103 Babu                         52
+       104 Fathimabi                    47
+       105                              17
+
+SQL> desc tbl_nit;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                                 NUMBER(5)
+ NAME                                               VARCHAR2(20)
+ AGE                                                NUMBER(3)
+
+SQL> alter table tbl_nit modify age number(2);
+alter table tbl_nit modify age number(2)
+                           *
+ERROR at line 1:
+ORA-01440: column to be modified must be empty to decrease precision or scale
+
+
+SQL>
+SQL> alter table tbl_nit modify Age number(2);
+alter table tbl_nit modify Age number(2)
+                           *
+ERROR at line 1:
+ORA-01440: column to be modified must be empty to decrease precision or scale
+
+
+SQL> alter table tbl_nit modify age number(2);
+alter table tbl_nit modify age number(2)
+                           *
+ERROR at line 1:
+ORA-01440: column to be modified must be empty to decrease precision or scale
+
+
+SQL> alter table tbl_nit modify age number(4);
+
+Table altered.
+
+SQL> alter table tbl_nit modify age number(3);
+alter table tbl_nit modify age number(3)
+                           *
+ERROR at line 1:
+ORA-01440: column to be modified must be empty to decrease precision or scale
+
+
+SQL> alter table tbl_nit modify age number(5);
+
+Table altered.
+
+SQL> alter table tbl_nit modify age number(2);
+alter table tbl_nit modify age number(2)
+                           *
+ERROR at line 1:
+ORA-01440: column to be modified must be empty to decrease precision or scale
+
+
+SQL> desc tbl_nit;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                                 NUMBER(5)
+ NAME                                               VARCHAR2(20)
+ AGE                                                NUMBER(5)
+
+SQL> alter table tbl_nit rename column age to eage;
+
+Table altered.
+
+SQL> desc tbl_nit;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                                 NUMBER(5)
+ NAME                                               VARCHAR2(20)
+ EAGE                                               NUMBER(5)
+
+SQL> rename tbl_nit to tbl_nith
+  2  rename tbl_nit to tbl_nith;
+rename tbl_nit to tbl_nith
+*
+ERROR at line 2:
+ORA-00933: SQL command not properly ended
+
+
+SQL> rename tbl_nit to tbl_nith;
+
+Table renamed.
+
+SQL> select * from tbl_nith
+  2  select * from tbl_nith
+  3  select * from tbl_nith;
+select * from tbl_nith
+*
+ERROR at line 2:
+ORA-00933: SQL command not properly ended
+
+
+SQL> select * from tbl_nith;
+
+        ID NAME                       EAGE
+---------- -------------------- ----------
+       101 Nithaj                       20
+       102 Zaheer                       15
+       103 Babu                         52
+       104 Fathimabi                    47
+       105                              17
+
+SQL> drop table tbl_nith;
+
+Table dropped.
+
+SQL> select * from tbl_nith;
+select * from tbl_nith
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> flashback table tbl_nith;
+flashback table tbl_nith
+*
+ERROR at line 1:
+ORA-00439: feature not enabled: Flashback Table
