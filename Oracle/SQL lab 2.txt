@@ -1,0 +1,245 @@
+SQL> create table nit(sale_id number(3),product_id number(4),quantity_sold number(3) sale_date date, total_price number(10,2));
+create table nit(sale_id number(3),product_id number(4),quantity_sold number(3) sale_date date, total_price number(10,2))
+                                                                                *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL> create table nit(sale_id number(3),product_id number(4),quantity_sold number(3),sale_date date, total_price number(10,2));
+
+Table created.
+
+SQL> insert into nit values(1,101,5,'01-01-2024',2500);
+insert into nit values(1,101,5,'01-01-2024',2500)
+                               *
+ERROR at line 1:
+ORA-01843: not a valid month
+
+
+SQL> insert into nit values(1,101,5,'01-JAN-2024',2500);
+
+1 row created.
+
+SQL> insert into nit values(2,102,3,'02-JAN-2024',900);
+
+1 row created.
+
+SQL> insert into nit values(3,103,2,'02-JAN-2024',60);
+
+1 row created.
+
+SQL> insert into nit values(4,104,4,'03-JAN-2024',80);
+
+1 row created.
+
+SQL> insert into nit values(5,105,6,'03-JAN-2024',90);
+
+1 row created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select * from nit;
+
+   SALE_ID PRODUCT_ID QUANTITY_SOLD SALE_DATE TOTAL_PRICE
+---------- ---------- ------------- --------- -----------
+         1        101             5 01-JAN-24        2500
+         2        102             3 02-JAN-24         900
+         3        103             2 02-JAN-24          60
+         4        104             4 03-JAN-24          80
+         5        105             6 03-JAN-24          90
+
+SQL> select sale_id,quantity_sold from nit;
+
+   SALE_ID QUANTITY_SOLD
+---------- -------------
+         1             5
+         2             3
+         3             2
+         4             4
+         5             6
+
+SQL> select sale_id,sale_date from nit;
+
+   SALE_ID SALE_DATE
+---------- ---------
+         1 01-JAN-24
+         2 02-JAN-24
+         3 02-JAN-24
+         4 03-JAN-24
+         5 03-JAN-24
+
+SQL> select * from nit where total_price > 100;
+
+   SALE_ID PRODUCT_ID QUANTITY_SOLD SALE_DATE TOTAL_PRICE
+---------- ---------- ------------- --------- -----------
+         1        101             5 01-JAN-24        2500
+         2        102             3 02-JAN-24         900
+
+SQL> select sale_id,sale_date from nit where sale_date='03-JAN-24';
+
+   SALE_ID SALE_DATE
+---------- ---------
+         4 03-JAN-24
+         5 03-JAN-24
+
+SQL> select sale_id,total_price from nit where sale_date='03-JAN-24';
+
+   SALE_ID TOTAL_PRICE
+---------- -----------
+         4          80
+         5          90
+
+SQL> select sale_id,product_id,total_price from nit where quantity_sold >4;
+
+   SALE_ID PRODUCT_ID TOTAL_PRICE
+---------- ---------- -----------
+         1        101        2500
+         5        105          90
+
+SQL> select * from nit where sale_id (1,3,5);
+select * from nit where sale_id (1,3,5)
+                                      *
+ERROR at line 1:
+ORA-00920: invalid relational operator
+
+
+SQL> select * from nit where sale_id in (1,3,5);
+
+   SALE_ID PRODUCT_ID QUANTITY_SOLD SALE_DATE TOTAL_PRICE
+---------- ---------- ------------- --------- -----------
+         1        101             5 01-JAN-24        2500
+         3        103             2 02-JAN-24          60
+         5        105             6 03-JAN-24          90
+
+SQL> select * from nit where total_price between 90 and 1000;
+
+   SALE_ID PRODUCT_ID QUANTITY_SOLD SALE_DATE TOTAL_PRICE
+---------- ---------- ------------- --------- -----------
+         2        102             3 02-JAN-24         900
+         5        105             6 03-JAN-24          90
+
+SQL> select * from nit where total_price not between 90 and 1000;
+
+   SALE_ID PRODUCT_ID QUANTITY_SOLD SALE_DATE TOTAL_PRICE
+---------- ---------- ------------- --------- -----------
+         1        101             5 01-JAN-24        2500
+         3        103             2 02-JAN-24          60
+         4        104             4 03-JAN-24          80
+
+SQL> select * from nit where sale_id not in (1,3,5);
+
+   SALE_ID PRODUCT_ID QUANTITY_SOLD SALE_DATE TOTAL_PRICE
+---------- ---------- ------------- --------- -----------
+         2        102             3 02-JAN-24         900
+         4        104             4 03-JAN-24          80
+
+SQL> update nit set total_price=500 where sale_id in (1,3,5);
+
+3 rows updated.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select * from nit
+  2  ;
+
+   SALE_ID PRODUCT_ID QUANTITY_SOLD SALE_DATE TOTAL_PRICE
+---------- ---------- ------------- --------- -----------
+         1        101             5 01-JAN-24         500
+         2        102             3 02-JAN-24         900
+         3        103             2 02-JAN-24         500
+         4        104             4 03-JAN-24          80
+         5        105             6 03-JAN-24         500
+
+SQL> delete from nit where total_price between 90 and 1000;
+
+4 rows deleted.
+
+SQL> select * from nit;
+
+   SALE_ID PRODUCT_ID QUANTITY_SOLD SALE_DATE TOTAL_PRICE
+---------- ---------- ------------- --------- -----------
+         4        104             4 03-JAN-24          80
+
+SQL> rollback;
+
+Rollback complete.
+
+SQL> select * from nit;
+
+   SALE_ID PRODUCT_ID QUANTITY_SOLD SALE_DATE TOTAL_PRICE
+---------- ---------- ------------- --------- -----------
+         1        101             5 01-JAN-24         500
+         2        102             3 02-JAN-24         900
+         3        103             2 02-JAN-24         500
+         4        104             4 03-JAN-24          80
+         5        105             6 03-JAN-24         500
+
+SQL> delete from nit where total_price not between 90 and 1000;
+
+1 row deleted.
+
+SQL> select * from nit;
+
+   SALE_ID PRODUCT_ID QUANTITY_SOLD SALE_DATE TOTAL_PRICE
+---------- ---------- ------------- --------- -----------
+         1        101             5 01-JAN-24         500
+         2        102             3 02-JAN-24         900
+         3        103             2 02-JAN-24         500
+         5        105             6 03-JAN-24         500
+
+SQL> select * from nit order by sale_id;
+
+   SALE_ID PRODUCT_ID QUANTITY_SOLD SALE_DATE TOTAL_PRICE
+---------- ---------- ------------- --------- -----------
+         1        101             5 01-JAN-24         500
+         2        102             3 02-JAN-24         900
+         3        103             2 02-JAN-24         500
+         5        105             6 03-JAN-24         500
+
+SQL> select * from nit order by sale_id desc;
+
+   SALE_ID PRODUCT_ID QUANTITY_SOLD SALE_DATE TOTAL_PRICE
+---------- ---------- ------------- --------- -----------
+         5        105             6 03-JAN-24         500
+         3        103             2 02-JAN-24         500
+         2        102             3 02-JAN-24         900
+         1        101             5 01-JAN-24         500
+
+SQL> alter table nit rename column sale_id to sales_id
+  2  ;
+
+Table altered.
+
+SQL> select * from nit;
+
+  SALES_ID PRODUCT_ID QUANTITY_SOLD SALE_DATE TOTAL_PRICE
+---------- ---------- ------------- --------- -----------
+         1        101             5 01-JAN-24         500
+         2        102             3 02-JAN-24         900
+         3        103             2 02-JAN-24         500
+         5        105             6 03-JAN-24         500
+
+SQL> alter table nit drop column sales_id;
+
+Table altered.
+
+SQL> select * from nit;
+
+PRODUCT_ID QUANTITY_SOLD SALE_DATE TOTAL_PRICE
+---------- ------------- --------- -----------
+       101             5 01-JAN-24         500
+       102             3 02-JAN-24         900
+       103             2 02-JAN-24         500
+       105             6 03-JAN-24         500
+
+SQL> rename nit to tbl_sales;
+
+Table renamed.
+
+SQL> drop table tbl_sales;
+
+Table dropped.
