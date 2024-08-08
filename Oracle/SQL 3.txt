@@ -1,0 +1,439 @@
+
+SQL*Plus: Release 11.2.0.2.0 Production on Thu Aug 8 13:17:16 2024
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> connect system
+Enter password:
+Connected.
+SQL> create table nit(eid number(5),ename varchar2(20), esalary number(7),dno number(4));
+
+Table created.
+
+SQL> insert into nit values(101,'Nithaj',50000,10);
+
+1 row created.
+
+SQL> insert into nit values(102,'Babu',60000,10);
+
+1 row created.
+
+SQL> insert into nit values(103,'Zaheer',65000,20);
+
+1 row created.
+
+SQL> insert into nit values(104,'Fathimabi',5000,20);
+
+1 row created.
+
+SQL> insert into nit values(105,'Shasin',6000,30);
+
+1 row created.
+
+SQL> insert into nit (eid,esalary,dno) values(105,6000,30);
+
+1 row created.
+
+SQL> select * from nit;
+
+       EID ENAME                   ESALARY        DNO
+---------- -------------------- ---------- ----------
+       101 Nithaj                    50000         10
+       102 Babu                      60000         10
+       103 Zaheer                    65000         20
+       104 Fathimabi                  5000         20
+       105 Shasin                     6000         30
+       105                            6000         30
+
+6 rows selected.
+
+SQL> update nit set esalary=7000 where eid=101;
+
+1 row updated.
+
+SQL> update nit set esalary=3000 where eid=102;
+
+1 row updated.
+
+SQL> update nit set esalary=4000 where eid=103;
+
+1 row updated.
+
+SQL> select * from nit;
+
+       EID ENAME                   ESALARY        DNO
+---------- -------------------- ---------- ----------
+       101 Nithaj                     7000         10
+       102 Babu                       3000         10
+       103 Zaheer                     4000         20
+       104 Fathimabi                  5000         20
+       105 Shasin                     6000         30
+       105                            6000         30
+
+6 rows selected.
+
+SQL> select dno,count(*) from nit group by dno;
+
+       DNO   COUNT(*)
+---------- ----------
+        30          2
+        20          2
+        10          2
+
+SQL> select dno,count() from nit group by dno;
+select dno,count() from nit group by dno
+           *
+ERROR at line 1:
+ORA-00909: invalid number of arguments
+
+
+SQL> update nit set eid=106 where eid=105;
+
+2 rows updated.
+
+SQL> select * from nit;
+
+       EID ENAME                   ESALARY        DNO
+---------- -------------------- ---------- ----------
+       101 Nithaj                     7000         10
+       102 Babu                       3000         10
+       103 Zaheer                     4000         20
+       104 Fathimabi                  5000         20
+       106 Shasin                     6000         30
+       106                            6000         30
+
+6 rows selected.
+
+SQL> select dno,count(*),sum(esalry),avg(esalry),min(esalary),max(esalary) from nit group by dno;
+select dno,count(*),sum(esalry),avg(esalry),min(esalary),max(esalary) from nit group by dno
+                                    *
+ERROR at line 1:
+ORA-00904: "ESALRY": invalid identifier
+
+
+SQL> select dno,count(*),sum(esalry),avg(esalary),min(esalary),max(esalary) from nit group by dno;
+select dno,count(*),sum(esalry),avg(esalary),min(esalary),max(esalary) from nit group by dno
+                        *
+ERROR at line 1:
+ORA-00904: "ESALRY": invalid identifier
+
+
+SQL> select dno,count(*),sum(esalary),avg(esalary),min(esalary),max(esalary) from nit group by dno;
+
+       DNO   COUNT(*) SUM(ESALARY) AVG(ESALARY) MIN(ESALARY) MAX(ESALARY)
+---------- ---------- ------------ ------------ ------------ ------------
+        30          2        12000         6000         6000                 6000
+        20          2         9000         4500         4000                 5000
+        10          2        10000         5000         3000                 7000
+
+SQL> select dno,count(*),sum(esalary),avg(esalary),min(esalary),max(esalary) from nit group by dno order by dno;
+
+       DNO   COUNT(*) SUM(ESALARY) AVG(ESALARY) MIN(ESALARY) MAX(ESALARY)
+---------- ---------- ------------ ------------ ------------ ------------
+        10          2        10000         5000         3000         7000
+        20          2         9000         4500         4000         5000
+        30          2        12000         6000         6000         6000
+
+SQL> select dno,count(*),sum(esalary),avg(esalary),min(esalary),max(esalary) from nit group by dno having min(esalary) > 3000 order by dno;
+
+       DNO   COUNT(*) SUM(ESALARY) AVG(ESALARY) MIN(ESALARY) MAX(ESALARY)
+---------- ---------- ------------ ------------ ------------ ------------
+        20          2         9000         4500         4000         5000
+        30          2        12000         6000         6000         6000
+
+SQL> create table stud(reg_no number(5) primary key,stud_name varchar2(20) not null,stud_email varchar(20) unique,stud_age number(3) check(Stud_age>0),syud_location varchar(20) default 'Erode');
+
+Table created.
+
+SQL> insert into stud values(101,'Nithaj','babu@gmail.com',21,'Anthiyur');
+
+1 row created.
+
+SQL> select * from stud;
+
+    REG_NO STUD_NAME            STUD_EMAIL             STUD_AGE
+---------- -------------------- -------------------- ----------
+SYUD_LOCATION
+--------------------
+       101 Nithaj               babu@gmail.com               21
+Anthiyur
+
+
+SQL> insert into stud (reg_no,stud_name,stud_email,stud_age) values(102,'Zaheer','zaheer@gmail.com'16);
+insert into stud (reg_no,stud_name,stud_email,stud_age) values(102,'Zaheer','zaheer@gmail.com'16)
+                                                                                              *
+ERROR at line 1:
+ORA-00917: missing comma
+
+
+SQL> insert into stud (reg_no,stud_name,stud_email,stud_age) values(102,'Zaheer','zaheer@gmail.com',16);
+
+1 row created.
+
+SQL> select * from stud;
+
+    REG_NO STUD_NAME            STUD_EMAIL             STUD_AGE
+---------- -------------------- -------------------- ----------
+SYUD_LOCATION
+--------------------
+       101 Nithaj               babu@gmail.com               21
+Anthiyur
+
+       102 Zaheer               zaheer@gmail.com             16
+Erode
+
+
+SQL> insert into stud (reg_no,stud_email,stud_age) values(101,'babu@gmail.com',21);
+insert into stud (reg_no,stud_email,stud_age) values(101,'babu@gmail.com',21)
+*
+ERROR at line 1:
+ORA-01400: cannot insert NULL into ("SYSTEM"."STUD"."STUD_NAME")
+
+
+SQL> insert into stud (reg_no,stud_name,stud_email,stud_age) values(101,'Babu','babu@gmail.com',21);
+insert into stud (reg_no,stud_name,stud_email,stud_age) values(101,'Babu','babu@gmail.com',21)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SYSTEM.SYS_C007004) violated
+
+
+SQL> insert into stud (reg_no,stud_name,stud_email,stud_age) values(101,'Babu','Zaheer@gmail.com',21);
+insert into stud (reg_no,stud_name,stud_email,stud_age) values(101,'Babu','Zaheer@gmail.com',21)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SYSTEM.SYS_C007004) violated
+
+
+SQL> insert into stud (reg_no,stud_name,stud_email,stud_age) values(101,'Babu','nithaj@gmail.com',21);
+insert into stud (reg_no,stud_name,stud_email,stud_age) values(101,'Babu','nithaj@gmail.com',21)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SYSTEM.SYS_C007004) violated
+
+
+SQL> insert into stud (reg_no,stud_name,stud_email,stud_age) values(101,'Babu','nithaj@gmail.com',0);
+insert into stud (reg_no,stud_name,stud_email,stud_age) values(101,'Babu','nithaj@gmail.com',0)
+*
+ERROR at line 1:
+ORA-02290: check constraint (SYSTEM.SYS_C007003) violated
+
+
+SQL> insert into stud (reg_no,stud_name,stud_email,stud_age) values(101,'Babu','nithaj@gmail.com',30);
+insert into stud (reg_no,stud_name,stud_email,stud_age) values(101,'Babu','nithaj@gmail.com',30)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SYSTEM.SYS_C007004) violated
+
+
+SQL> insert into stud (reg_no,stud_name,stud_email,stud_age) values(101,'Babu','fa@gmail.com',30);
+insert into stud (reg_no,stud_name,stud_email,stud_age) values(101,'Babu','fa@gmail.com',30)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SYSTEM.SYS_C007004) violated
+
+
+SQL> insert into stud (reg_no,stud_name,stud_email,stud_age) values(101,'Babu','fa@gmail',30);
+insert into stud (reg_no,stud_name,stud_email,stud_age) values(101,'Babu','fa@gmail',30)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SYSTEM.SYS_C007004) violated
+
+
+SQL> insert into stud (reg_no,stud_name,stud_email,stud_age) values(103,'Babu','Nithaj@gmail',30);
+
+1 row created.
+
+SQL> select * from stud;
+
+    REG_NO STUD_NAME            STUD_EMAIL             STUD_AGE
+---------- -------------------- -------------------- ----------
+SYUD_LOCATION
+--------------------
+       101 Nithaj               babu@gmail.com               21
+Anthiyur
+
+       102 Zaheer               zaheer@gmail.com             16
+Erode
+
+       103 Babu                 Nithaj@gmail                 30
+Erode
+
+
+SQL> create ttable depart(dno number(5) primmary key,dname varchar2(20));
+create ttable depart(dno number(5) primmary key,dname varchar2(20))
+       *
+ERROR at line 1:
+ORA-00901: invalid CREATE command
+
+
+SQL> create table depart(dno number(5) primmary key,dname varchar2(20));
+create table depart(dno number(5) primmary key,dname varchar2(20))
+                                  *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL> create table depart(dno number(5) primary key,dname varchar2(20));
+
+Table created.
+
+SQL> creata table employ(id number(5) primary key, name varchar2(20),esalary number(5), dno number(5),foreign key(dno) references department (dno));
+SP2-0734: unknown command beginning "creata tab..." - rest of line ignored.
+SQL> create table employ(id number(5) primary key, name varchar2(20),esalary number(5), dno number(5),foreign key(dno) references department (dno));
+create table employ(id number(5) primary key, name varchar2(20),esalary number(5), dno number(5),foreign key(dno) references department (dno))
+                                                                                                                             *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> create table employ(id number(5) primary key, name varchar2(20),esalary number(5), dno number(5),foreign key(dno) references depart (dno));
+
+Table created.
+
+SQL> insert into employ values(101,'Nithaj',2000,10);
+insert into employ values(101,'Nithaj',2000,10)
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (SYSTEM.SYS_C007008) violated - parent key not
+found
+
+
+SQL> insert into depart values(10,'EEE');
+
+1 row created.
+
+SQL> insert into employ values(101,'Nithaj',2000,10);
+
+1 row created.
+
+SQL> select * from employ;
+
+        ID NAME                    ESALARY        DNO
+---------- -------------------- ---------- ----------
+       101 Nithaj                     2000         10
+
+SQL> select * from depart;
+
+       DNO DNAME
+---------- --------------------
+        10 EEE
+
+SQL> create view mynit as select * from employe where dno=10;
+create view mynit as select * from employe where dno=10
+                                   *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> create view mynit as select * from employ where dno=10;
+
+View created.
+
+SQL> select * from mynit;
+
+        ID NAME                    ESALARY        DNO
+---------- -------------------- ---------- ----------
+       101 Nithaj                     2000         10
+
+SQL> update  mynit set esalary=50000 where id=101;
+
+1 row updated.
+
+SQL> select * from mynit;
+
+        ID NAME                    ESALARY        DNO
+---------- -------------------- ---------- ----------
+       101 Nithaj                    50000         10
+
+SQL> select * from employ;
+
+        ID NAME                    ESALARY        DNO
+---------- -------------------- ---------- ----------
+       101 Nithaj                    50000         10
+
+SQL> insert into mynit values(102,'Zaheer',6000,10);
+
+1 row created.
+
+SQL> select * from mynit;
+
+        ID NAME                    ESALARY        DNO
+---------- -------------------- ---------- ----------
+       101 Nithaj                    50000         10
+       102 Zaheer                     6000         10
+
+SQL> delete from mynit where id=102;
+
+1 row deleted.
+
+SQL> select * from mynit;
+
+        ID NAME                    ESALARY        DNO
+---------- -------------------- ---------- ----------
+       101 Nithaj                    50000         10
+
+SQL> select * from employ;
+
+        ID NAME                    ESALARY        DNO
+---------- -------------------- ---------- ----------
+       101 Nithaj                    50000         10
+
+SQL> drop view mynit;
+
+View dropped.
+
+SQL> select eid, ename from nit;
+
+       EID ENAME
+---------- --------------------
+       101 Nithaj
+       102 Babu
+       103 Zaheer
+       104 Fathimabi
+       106 Shasin
+       106
+
+6 rows selected.
+
+SQL> select eid as "Employee ID", ename from nit;
+
+Employee ID ENAME
+----------- --------------------
+        101 Nithaj
+        102 Babu
+        103 Zaheer
+        104 Fathimabi
+        106 Shasin
+        106
+
+6 rows selected.
+
+SQL> select eid, ename from nit;
+
+       EID ENAME
+---------- --------------------
+       101 Nithaj
+       102 Babu
+       103 Zaheer
+       104 Fathimabi
+       106 Shasin
+       106
+
+6 rows selected.
+
+SQL> select dno,count(*) a "total" from nit group by dno;
+select dno,count(*) a "total" from nit group by dno
+                      *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> select dno,count(*) as "total" from nit group by dno;
+
+       DNO      total
+---------- ----------
+        30          2
+        20          2
+        10          2
+
+SQL>
